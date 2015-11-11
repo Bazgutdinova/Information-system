@@ -44,4 +44,19 @@ public class FuelCalculator {
         calcButton = new JButton("Рассчитать");
         calcButton.addActionListener(new ActionListener() {
             @Override
+public void actionPerformed(ActionEvent ae) {
+                try {
+                    double way = Double.parseDouble(wayField.getText());
+                    double average = Double.parseDouble(averageField.getText());
+                    double price = Double.parseDouble(priceField.getText());
+                    double fuel = average / 100.0 * way;
+                    double cost = fuel * price;
+                    resultLabel.setText("<html>Понадобится <font style='color: red; font-weight: bold;'>" + fuel + "</font> литров топлива, обойдётся в <font style='color: red; font-weight: bold;'>" + cost + "</font> рублей.</html>");
+                }
+                catch ( NumberFormatException nfe ) {
+                    resultLabel.setText("Проверьте введённые данные");
+                }
+            }
+        });
+        resultLabel = new JLabel("Введите данные для рассчёта");
            
