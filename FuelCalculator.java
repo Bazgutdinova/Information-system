@@ -84,4 +84,56 @@ public void actionPerformed(ActionEvent ae) {
         layout.setConstraints(averageField, constraints);
         constraints.gridy = 2;
         layout.setConstraints(priceField, constraints);
+        constraints.gridx = 2;
+        constraints.ipadx = 0;
+        constraints.gridy = 0;
+        layout.setConstraints(kmLabel, constraints);
+        constraints.gridy = 1;
+        layout.setConstraints(litersLabel, constraints);
+        constraints.gridy = 2;
+        layout.setConstraints(rurLabel, constraints);
         
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.anchor = GridBagConstraints.EAST;
+        layout.setConstraints(calcButton, constraints);
+        
+        constraints.gridy = 5;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.WEST;
+        layout.setConstraints(resultLabel, constraints);
+        
+        mainFrame = new JFrame("Расход топлива");
+        mainFrame.setSize(600, 450);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setLayout(layout);
+        
+        mainFrame.add(wayLabel);
+        mainFrame.add(averageLabel);
+        mainFrame.add(priceLabel);
+        mainFrame.add(wayField);
+        mainFrame.add(averageField);
+        mainFrame.add(priceField);
+        mainFrame.add(kmLabel);
+        mainFrame.add(litersLabel);
+        mainFrame.add(rurLabel);
+        mainFrame.add(calcButton);
+        mainFrame.add(resultLabel);
+        
+        mainFrame.pack();
+        mainFrame.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new FuelCalculator();
+            }
+        });
+    }
+ 
+}
+
+
